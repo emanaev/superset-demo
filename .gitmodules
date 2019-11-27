@@ -1,0 +1,3 @@
+[submodule "vendor/pg2ch"]
+	path = vendor/pg2ch
+	url = https://github.com/emanaev/pg2ch.git
