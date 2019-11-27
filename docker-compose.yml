@@ -1,0 +1,48 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    restart: always
+    volumes:
+      - redis:/data
+
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: superset
+      POSTGRES_PASSWORD: superset
+      POSTGRES_USER: superset
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+
+  superset:
+    image: amancevice/superset
+    restart: always
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      MAPBOX_API_KEY: ${MAPBOX_API_KEY}
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./superset_config.py:/etc/superset/superset_config.py
+
+  clickhouse:
+    image: yandex/clickhouse-server
+    restart: always
+    volumes:
+      - clickhouse:/var/lib/clickhouse
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 262144
+        hard: 262144
+
+
+volumes:
+  postgres:
+  redis:
+  clickhouse:

@@ -1,0 +1,22 @@
+tables:
+  wb_health_population:
+    main_table: wb_health_population
+    engine: MergeTree
+    max_buffer_length: 1000
+
+clickhouse:
+  host: clickhouse
+  database: default
+  username: default
+
+postgres:
+  host: postgres
+  port: 5432
+  database: superset
+  user: superset
+  password: superset
+  replication_slot_name: my_slot
+  publication_name: my_pub
+
+db_path: db
+inactivity_flush_timeout: '30s'
