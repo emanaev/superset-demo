@@ -15,7 +15,12 @@ services:
       POSTGRES_USER: superset
     volumes:
       - postgres:/var/lib/postgresql/data
-      - ./postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+      - "-c"
+      - "max_replication_slots=2"
 
   superset:
     image: amancevice/superset
@@ -40,7 +45,6 @@ services:
       nofile:
         soft: 262144
         hard: 262144
-
 
 volumes:
   postgres:
