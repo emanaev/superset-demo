@@ -36,15 +36,23 @@ services:
       - ./superset_config.py:/etc/superset/superset_config.py
 
   clickhouse:
-    image: yandex/clickhouse-server
+    build: clickhouse
     restart: always
     volumes:
       - clickhouse:/var/lib/clickhouse
+      - ./odbc.ini:/etc/odbc.ini
     ulimits:
       nproc: 65535
       nofile:
         soft: 262144
         hard: 262144
+
+  script:
+    build: script
+    volumes:
+      - ./odbc.ini:/etc/odbc.ini # Create currect unixODBC DSN in ./odbc.ini
+    env_file:
+      - dsn.env
 
 volumes:
   postgres:
