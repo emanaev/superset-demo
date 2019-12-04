@@ -8,7 +8,7 @@ git clone https://github.com/emanaev/superset-demo.git
 cd superset-demo
 ```
 
-Create local file `odbc.ini` for your Postgres (GreenPlum) datasource (replace <VARIABLES> with your custom settings):
+Create local file `odbc.ini` for your Postgres (GreenPlum) datasource. Use the template replacing <VARIABLES> with your custom settings:
 ```
 [<DSN_NAME>]
 DRIVER = PostgreSQL ANSI
@@ -16,10 +16,10 @@ SERVERNAME = <POSTGRES_SERVER_DNS_OR_IP>
 PORT = 5432
 DATABASE = <POSTGRES_DATABASE_NAME>
 USERNAME = <POSTGRES_LOGIN>
-PASSWORD = <POSTGRES_PASSWORD
+PASSWORD = <POSTGRES_PASSWORD>
 ```
 
-Use `Postgres ANSI` for ANSI-encoded connections or `Postgres Unicode` for Unicode connections, see [odbcinst.ini](https://github.com/emanaev/superset-demo/blob/master/clickhouse/odbcinst.ini) for details
+Use `DRIVER = Postgres ANSI` for ANSI-encoded connections or `DRIVER = Postgres Unicode` for Unicode connections, see [`odbcinst.ini`](https://github.com/emanaev/superset-demo/blob/master/clickhouse/odbcinst.ini) for details
 
 Create local file `dsn.env` (replace <DSN_NAME> with approppriate name, setted in `odbc.ini` earlier):
 ```
@@ -34,7 +34,7 @@ Start the core:
 docker-compose build
 docker-compose up -d postgres redis clickhouse
 ```
-Start and init Superset. You will be prompted to create admin account. Rememver the password:
+Start and init Superset. You will be prompted to create admin account. Remember the password:
 ```
 docker-compose up -d superset
 docker-compose exec superset superset-init
