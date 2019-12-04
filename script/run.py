@@ -132,16 +132,7 @@ def execute(sql):
   print(sql)
   return client.execute(sql)
 
-tables = [
-  "categories",
-  "tournaments",
-  "events",
-  "player",
-  "player_bonus",
-  "payments",
-  "bet",
-  "bet_item"
-]
+tables = os.environ['TABLES'].split(',')
 
 if CH_BUF_DB == 'default':
   for tblName in tables:

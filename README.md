@@ -8,7 +8,7 @@ git clone https://github.com/emanaev/superset-demo.git
 cd superset-demo
 ```
 
-Create local file `odbc.ini` for your Postgres (GreenPlum) datasource. Use the template replacing <VARIABLES> with your custom settings:
+Edit local file `odbc.ini` for your Postgres (GreenPlum) datasource. Use the template replacing <VARIABLES> with your custom settings:
 ```
 [<DSN_NAME>]
 DRIVER = PostgreSQL ANSI
@@ -21,13 +21,10 @@ PASSWORD = <POSTGRES_PASSWORD>
 
 Use `DRIVER = Postgres ANSI` for ANSI-encoded connections or `DRIVER = Postgres Unicode` for Unicode connections, see [`odbcinst.ini`](https://github.com/emanaev/superset-demo/blob/master/clickhouse/odbcinst.ini) for details
 
-Create local file `dsn.env` (replace <DSN_NAME> with approppriate name, setted in `odbc.ini` earlier):
+Edit local file `dsn.env`. Replace <DSN_NAME> with approppriate name, setted in `odbc.ini` earlier, set list of tables to import:
 ```
 DSN=<DSN_NAME>
-```
-Adjust list of your Postgres (GreenPlum) tables you want to import in ClickHouse at the end of [`script/run.py`](https://github.com/emanaev/superset-demo/blob/master/script/run.py#L135):
-```
-tables = ['table1', 'table2', ...]
+TABLES=<TABLE_NAME_1>,<TABLE_NAME_2>,<TABLE_NAME_3,...
 ```
 Start the core:
 ```
