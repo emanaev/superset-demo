@@ -40,6 +40,8 @@ docker-compose up -d superset
 docker-compose exec superset superset-init
 ```
 Run importer. It will copy table structure from Postgres (GreenPlum) to Clickhouse `default` database and fill it with data
-```docker-compose run script```
+```
+docker-compose run script
+```
 Go to `http://<LOCAL_IP>:8088`, login with login/password settled earlier and create a database with type `Clickhouse` and server address `clickhouse`
 Now you'll be able to see imported tables in `default` database. Use SQL Editor to serf them, or created your dashboards
