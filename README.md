@@ -26,10 +26,6 @@ Edit local file `dsn.env`. Replace <DSN_NAME> with approppriate name, setted in 
 DSN=<DSN_NAME>
 TABLES=<TABLE_NAME_1>,<TABLE_NAME_2>,<TABLE_NAME_3,...
 ```
-Adjust list of your Postgres (GreenPlum) tables you want to import in ClickHouse at the end of [`script/run.py`](https://github.com/emanaev/superset-demo/blob/master/script/run.py#L135):
-```
-tables = ['table1', 'table2', ...]
-```
 Start the core:
 ```
 docker-compose build
