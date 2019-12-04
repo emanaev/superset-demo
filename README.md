@@ -44,4 +44,4 @@ Run importer. It will copy table structure from Postgres (GreenPlum) to Clickhou
 docker-compose run script
 ```
 Go to `http://<LOCAL_IP>:8088`, login with login/password settled earlier and create a database with type `Clickhouse` and server address `clickhouse`
-Now you'll be able to see imported tables in `default` database. Use SQL Editor to serf them, or created your dashboards
+Now you'll be able to see imported tables in `default` database. Use SQL Editor to surf them, or created your dashboards
